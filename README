@@ -1,7 +1,10 @@
-This is only an exercise in Clojure:
-* Create a chat server using JBoss Netty
-* Clients are telnet programs
+This is only an exercise of a Clojure newbie:
+* Chat server: JBoss Netty
+* Clients: telnet programs
 
 Usage:
 * To compile: make, you must have Maven2
 * To run: make start, then telnet localhost 3000
+
+Comments are very welcome. Please write in Issues:
+http://github.com/ngocdaothanh/telchat/issues
