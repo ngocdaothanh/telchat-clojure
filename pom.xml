@@ -5,7 +5,7 @@
   <artifactId>telchat</artifactId>
   <packaging>jar</packaging>
   <version>0.1-SNAPSHOT</version>
-  <name>mfc</name>
+  <name>telnet</name>
   <url>http://maven.apache.org</url>
 
   <build>
