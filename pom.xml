@@ -53,6 +53,13 @@
   </dependencies>
 
   <repositories>
+    <!-- clojure and clojure-contrib -->
+    <repository>
+      <id>tapestry-snapshots</id>
+      <url>http://tapestry.formos.com/maven-snapshot-repository/</url>
+    </repository>
+
+    <!-- Netty -->
     <repository>
       <id>repository.jboss.org</id>
       <url>http://repository.jboss.org/maven2</url>
