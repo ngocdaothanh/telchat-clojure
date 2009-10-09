@@ -2,7 +2,7 @@
   (:require [telchat.logic.room :as room])
   (:require [clojure.contrib.logging :as logging])
   (:import
-    [telchat.net            Handler]
+    [telchatnet             Handler]
     [org.jboss.netty.buffer ChannelBuffers]))
 
 (defn client

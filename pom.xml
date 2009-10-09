@@ -18,7 +18,7 @@
         </configuration>
       </plugin>
 
-      <!-- See http://groups.google.com/group/clojure/browse_thread/thread/c0f1fa01103cd350 -->
+      <!-- http://github.com/talios/clojure-maven-plugin -->
       <plugin>
         <groupId>com.theoryinpractise</groupId>
         <artifactId>clojure-maven-plugin</artifactId>
@@ -26,6 +26,32 @@
           <sourceDirectories>
             <sourceDirectory>src/main/clojure</sourceDirectory>
           </sourceDirectories>
+          <namespaces>
+            <namespace>!telchat.app</namespace>
+          </namespaces>
+        </configuration>
+      </plugin>
+
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>exec-maven-plugin</artifactId>
+      <version>1.1</version>
+      <executions>
+        <execution>
+          <goals>
+            <goal>exec</goal>
+          </goals>
+        </execution>
+      </executions>
+      <configuration>
+        <executable>java</executable>
+          <arguments>
+            <argument>-cp</argument><classpath/>
+            <argument>clojure.main</argument>
+            <argument>src/main/clojure/telchat/app.clj</argument>
+            <argument>-Xmx1024M</argument>
+            <argument>-server</argument>
+          </arguments>
         </configuration>
       </plugin>
     </plugins>

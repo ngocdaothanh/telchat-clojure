@@ -1,4 +1,4 @@
-package telchat.net;
+package telchatnet;
 
 import org.jboss.netty.channel.ChannelPipelineCoverage;
 import org.jboss.netty.channel.SimpleChannelUpstreamHandler;
