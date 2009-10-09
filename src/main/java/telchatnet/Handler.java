@@ -1,3 +1,4 @@
+// See Makefile for the reason why this package is not telchat.net
 package telchatnet;
 
 import org.jboss.netty.channel.ChannelPipelineCoverage;
