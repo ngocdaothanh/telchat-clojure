@@ -5,12 +5,12 @@
     [telchatnet             Handler]
     [org.jboss.netty.buffer ChannelBuffers]))
 
-(defn client
+(defn make-client
   "Returns a client to be used at the logic part."
   [channel]
   {:type 'telchat.net.handler, :channel channel})
 
-(defn channel-buffer
+(defn make-channel-buffer
   "Returns a channel buffer from string data."
   [msg]
   (ChannelBuffers/copiedBuffer msg "UTF-8"))
@@ -19,25 +19,25 @@
   "Sends string data to the channel of the client."
   [client msg]
   (let [channel (:channel client)
-        cb      (channel-buffer msg)]
+        cb      (make-channel-buffer msg)]
     (.write channel cb)))
 
 ;-------------------------------------------------------------------------------
 
-(defn handler
+(defn make-handler
   "Returns a Netty handler."
   []
   (proxy [Handler] []
     (channelConnected [ctx e]
-      (let [c (client (.getChannel e))]
+      (let [c (make-client (.getChannel e))]
         (room/on-connect c)))
 
     (channelDisconnected [ctx e]
-      (let [c (client (.getChannel e))]
+      (let [c (make-client (.getChannel e))]
         (room/on-disconnect c)))
 
     (messageReceived [ctx e]
-      (let [c   (client (.getChannel e))
+      (let [c   (make-client (.getChannel e))
             cb  (.getMessage e)
             msg (.toString cb "UTF-8")]  ; Get string data from channel buffer
         (room/on-msg c msg)))

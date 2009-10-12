@@ -7,25 +7,25 @@
         [org.jboss.netty.channel            Channels ChannelPipelineFactory]
         [org.jboss.netty.channel.socket.nio NioServerSocketChannelFactory]))
 
-(defn channel-factory
+(defn make-channel-factory
   "Returns a Netty channel factory."
   []
   (NioServerSocketChannelFactory.
     (Executors/newCachedThreadPool) (Executors/newCachedThreadPool)))
 
-(defn pipeline-factory
+(defn make-pipeline-factory
   "Returns a Netty pipeline factory."
   []
   (proxy [ChannelPipelineFactory] []
     (getPipeline []
       (let [pipeline (Channels/pipeline)]
-        (.addLast pipeline "handler" (handler/handler))
+        (.addLast pipeline "handler" (handler/make-handler))
         pipeline))))
 
 (defn start
   "Returns a Netty server."
   [port]
-  (let [bootstrap (ServerBootstrap. (channel-factory))]
-    (.setPipelineFactory bootstrap (pipeline-factory))
+  (let [bootstrap (ServerBootstrap. (make-channel-factory))]
+    (.setPipelineFactory bootstrap (make-pipeline-factory))
     (.bind               bootstrap (InetSocketAddress. port))))
 
