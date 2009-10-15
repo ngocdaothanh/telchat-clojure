@@ -1,97 +1,76 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>telchat</groupId>
-  <artifactId>telchat</artifactId>
-  <packaging>jar</packaging>
-  <version>0.1-SNAPSHOT</version>
-  <name>telnet</name>
-  <url>http://maven.apache.org</url>
+	<groupId>telchat</groupId>
+	<artifactId>telchat</artifactId>
+	<packaging>jar</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>telnet</name>
+	<url>http://maven.apache.org</url>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
 
-      <!-- http://github.com/talios/clojure-maven-plugin -->
-      <plugin>
-        <groupId>com.theoryinpractise</groupId>
-        <artifactId>clojure-maven-plugin</artifactId>
-        <configuration>
-          <sourceDirectories>
-            <sourceDirectory>src/main/clojure</sourceDirectory>
-          </sourceDirectories>
-          <namespaces>
-            <namespace>!telchat.app</namespace>
-          </namespaces>
-        </configuration>
-      </plugin>
+			<!-- http://github.com/talios/clojure-maven-plugin -->
+			<plugin>
+				<groupId>com.theoryinpractise</groupId>
+				<artifactId>clojure-maven-plugin</artifactId>
+				<configuration>
+					<sourceDirectories>
+						<sourceDirectory>src/main/clojure</sourceDirectory>
+					</sourceDirectories>
+					<namespaces>
+						<namespace>!telchat.app</namespace>
+					</namespaces>
+					<script>src/main/clojure/telchat/app.clj</script>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-    <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>exec-maven-plugin</artifactId>
-      <version>1.1</version>
-      <executions>
-        <execution>
-          <goals>
-            <goal>exec</goal>
-          </goals>
-        </execution>
-      </executions>
-      <configuration>
-        <executable>java</executable>
-          <arguments>
-            <argument>-cp</argument><classpath/>
-            <argument>clojure.main</argument>
-            <argument>src/main/clojure/telchat/app.clj</argument>
-            <argument>-Xmx1024M</argument>
-            <argument>-server</argument>
-          </arguments>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	<dependencies>
+		<dependency>
+			<groupId>org.clojure</groupId>
+			<artifactId>clojure-lang</artifactId>
+			<version>1.1.0-alpha-SNAPSHOT</version>
+		</dependency>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>clojure-lang</artifactId>
-      <version>1.1.0-alpha-SNAPSHOT</version>
-    </dependency>
+		<dependency>
+			<groupId>org.clojure</groupId>
+			<artifactId>clojure-contrib</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 
-    <dependency>
-      <groupId>org.clojure</groupId>
-      <artifactId>clojure-contrib</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
+		<dependency>
+			<groupId>org.jboss.netty</groupId>
+			<artifactId>netty</artifactId>
+			<version>3.1.5.GA</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
 
-    <dependency>
-      <groupId>org.jboss.netty</groupId>
-      <artifactId>netty</artifactId>
-      <version>3.1.5.GA</version>
-      <scope>compile</scope>
-    </dependency>
-  </dependencies>
+	<repositories>
+		<!-- clojure and clojure-contrib -->
+		<repository>
+			<id>tapestry-snapshots</id>
+			<url>http://tapestry.formos.com/maven-snapshot-repository/</url>
+		</repository>
 
-  <repositories>
-    <!-- clojure and clojure-contrib -->
-    <repository>
-      <id>tapestry-snapshots</id>
-      <url>http://tapestry.formos.com/maven-snapshot-repository/</url>
-    </repository>
-
-    <!-- Netty -->
-    <repository>
-      <id>repository.jboss.org</id>
-      <url>http://repository.jboss.org/maven2</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+		<!-- Netty -->
+		<repository>
+			<id>repository.jboss.org</id>
+			<url>http://repository.jboss.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 </project>
