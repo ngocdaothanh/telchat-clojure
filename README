@@ -2,14 +2,19 @@ This is only an exercise of a Clojure newbie:
 * Chat server: JBoss Netty
 * Clients: telnet
 
-Usage:
-* Run "make start" to start server, you must have Maven2
-* Then run "telnet localhost 3000" to connect to the server
+== Usage
+
+* mvn compile to compile Java file, you must have Maven2
+* mvn clojure:compile to compile Clojure files, optional, only for static syntax check
+* mvn clojure:run to start server on port 3000
+* telnet localhost 3000 to connect to the server
+
+== Notes
 
 If you have problem compiling Telchat, make sure you are using Sun Java, not
 OpenJDK (usually much slower). On Ubuntu:
-sudo apt-get install sun-java6-jdk
-sudo update-alternatives --config java
+* sudo apt-get install sun-java6-jdk
+* sudo update-alternatives --config java
 
 Comments are very welcome. Please write in Issues:
 http://github.com/ngocdaothanh/telchat/issues
