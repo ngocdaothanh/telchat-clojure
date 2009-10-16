@@ -17,4 +17,7 @@ OpenJDK (usually much slower). On Ubuntu:
 * sudo update-alternatives --config java
 
 Comments are very welcome. Please write in Issues:
-http://github.com/ngocdaothanh/telchat/issues
+http://github.com/ngocdaothanh/telchat-clojure/issues
+
+See also:
+http://github.com/ngocdaothanh/telchat-scala
