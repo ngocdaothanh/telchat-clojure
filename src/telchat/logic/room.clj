@@ -40,7 +40,7 @@
 ; Broadcast "Idle" message if the room is inactive for a while.
 ; This is just for testing timer feature of Java.
 
-(def INTERVAL 5)
+(def *interval* 5)
 
 (let [runtime     (Runtime/getRuntime)
       num-cores   (.availableProcessors runtime)
@@ -52,4 +52,4 @@
 (def future-task false)  ; Forward declaration
 (defn reschedule []
   (if future-task (.cancel future-task false))
-  (def future-task (.schedule timer task (clojure.core/long INTERVAL) TimeUnit/SECONDS)))
+  (def future-task (.schedule timer task (clojure.core/long *interval*) TimeUnit/SECONDS)))

@@ -2,8 +2,8 @@
   (:require [telchat.logic.room :as room])
   (:require [clojure.contrib.logging :as logging])
   (:import
-    [telchat.net            Handler]
-    [org.jboss.netty.buffer ChannelBuffers]))
+    [org.jboss.netty.channel SimpleChannelUpstreamHandler]
+    [org.jboss.netty.buffer  ChannelBuffers]))
 
 (defn make-client
   "Returns a client to be used at the logic part."
@@ -27,7 +27,7 @@
 (defn make-handler
   "Returns a Netty handler."
   []
-  (proxy [Handler] []
+  (proxy [SimpleChannelUpstreamHandler] []
     (channelConnected [ctx e]
       (let [c (make-client (.getChannel e))]
         (room/on-connect c)))

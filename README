@@ -1,23 +1,28 @@
+See: http://github.com/ngocdaothanh/telchat-scala
+
 This is only an exercise of a Clojure newbie:
 * Chat server: JBoss Netty
 * Clients: telnet
 
 == Usage
 
-* mvn compile to compile Java file, you must have Maven2
-* mvn clojure:compile to compile Clojure files, optional, only for static syntax check
-* mvn clojure:run to start server on port 3000
-* telnet localhost 3000 to connect to the server
+Download dependencies:
+lein deps
 
-== Notes
+Make standalone jar file:
+lein uberjar
+
+Start server on port 3000:
+java -jar telchat-clojure-0.1-SNAPSHOT-standalone.jar
+
+Connect to the server:
+telnet localhost 3000
+
+== OpenJDK
 
 If you have problem compiling Telchat, make sure you are using Sun Java, not
-OpenJDK (usually much slower). On Ubuntu:
+OpenJDK (which is usually much slower).
+
+On Ubuntu:
 * sudo apt-get install sun-java6-jdk
 * sudo update-alternatives --config java
-
-Comments are very welcome. Please write in Issues:
-http://github.com/ngocdaothanh/telchat-clojure/issues
-
-See also:
-http://github.com/ngocdaothanh/telchat-scala
